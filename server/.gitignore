@@ -1,6 +1,5 @@
 # Deno-specific
 deno.lock
-deno.json
 deno.jsonc
 *.d.ts
 
