@@ -3,7 +3,7 @@ import { db } from "./db/db.ts";
 
 const app = express();
 
-app.get("/", (res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
 });
 
