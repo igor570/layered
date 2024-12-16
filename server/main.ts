@@ -27,15 +27,11 @@ app.post("/login", async (ctx) => {
 
     if (error) APIResponse(error.message, 400);
 
-    const user = {
-      id: data.user?.id,
-      email: data.session?.user.email,
-      sessionToken: data.session?.access_token,
-    };
-
     return ctx.json({
       message: "Sign in successful",
-      user,
+      user: {
+        sessionToken: data.session?.access_token,
+      },
     });
   }
 
