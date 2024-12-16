@@ -1,20 +1,46 @@
-import express, { Response } from "npm:express@5.0.1";
 import { db } from "./db/db.ts";
+import { Hono } from "@hono/hono";
+import { APIResponse } from "./utils/utils.ts";
 
-const app = express();
+const app = new Hono();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World");
+app.post("/signup", async (ctx) => {
+  const { email, password } = await ctx.req.json();
+
+  if (email && password) {
+    const { error } = await db.auth.signUp({ email, password });
+
+    if (error) APIResponse("Sign up failed: ", error.status);
+
+    return APIResponse("User registered", 201);
+  }
 });
 
-app.get("/users", async (req: Request, res: Response) => {
-  const { data, error } = await db.from("test").select("*");
+app.post("/login", async (ctx) => {
+  const { email, password } = await ctx.req.json();
 
-  if (error) throw new Error("Couldn't fetch test data");
+  if (email && password) {
+    const { data, error } = await db.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  return await res.json(data);
+    if (error) APIResponse(error.message, 400);
+
+    const user = {
+      id: data.user?.id,
+      email: data.session?.user.email,
+      sessionToken: data.session?.access_token,
+    };
+
+    return ctx.json({
+      message: "Sign in successful",
+      user,
+    });
+  }
+
+  return ctx.json({ error: "Email and password are required" }, 400);
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
+//Launch server
+Deno.serve(app.fetch);
