@@ -4,15 +4,15 @@ import { Meta, StoryObj } from '@storybook/react';
 import SignInForm from './SigninForm';
 
 const meta: Meta<typeof SignInForm> = {
-    component: SignInForm,
-    argTypes: {
-        type: {
-            options: ['registration', 'login'],
-            control: {
-                type: 'radio'
-            }
-        }
+  component: SignInForm,
+  argTypes: {
+    type: {
+      options: ['registration', 'login'],
+      control: {
+        type: 'radio'
+      }
     }
+  }
 };
 
 export default meta;
@@ -20,14 +20,14 @@ export default meta;
 type Story = StoryObj<typeof SignInForm>;
 
 export const RegistrationStory: Story = {
-    render: ({type}) => <SignInForm type={type}/>,
-    args: {
-        type: 'registration'
-    }
-}
+  render: ({ type }) => <SignInForm type={type} />,
+  args: {
+    type: 'registration'
+  }
+};
 export const LoginStory: Story = {
-    render: ({type}) => <SignInForm type={type}/>,
-    args: {
-        type: 'login'
-    }
-}
+  render: ({ type }) => <SignInForm type={type} />,
+  args: {
+    type: 'login'
+  }
+};

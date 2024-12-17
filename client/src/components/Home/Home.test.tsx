@@ -3,13 +3,13 @@ import { render, screen } from '@testing-library/react';
 
 import * as HomeStories from './Home.stories';
 
-const {HomeStory} = composeStories(HomeStories)
+const { HomeStory } = composeStories(HomeStories);
 
-describe("Home", () => {
-    test("It should render home component", () => {
-        render(<HomeStory/>);
+describe('Home', () => {
+  test('It should render home component', () => {
+    render(<HomeStory />);
 
-        const homeElement = screen.queryByTestId('home');
-        expect(homeElement).toBeInTheDocument();
-    });
+    const homeElement = screen.queryByTestId('home');
+    expect(homeElement).toBeInTheDocument();
+  });
 });
