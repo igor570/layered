@@ -4,7 +4,7 @@ type ErrorProps = { message: string };
 
 function Error({ message }: ErrorProps) {
   return (
-    <div data-testid="error" className="error">
+    <div data-testid='error' className='error'>
       {message}
     </div>
   );

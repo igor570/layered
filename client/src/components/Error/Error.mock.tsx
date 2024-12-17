@@ -5,7 +5,7 @@ import './Error';
 vi.mock('./Error', () => {
   return {
     Error: vi.fn(() => {
-      return <div data-testid="Error" />;
+      return <div data-testid='Error' />;
     })
   };
 });

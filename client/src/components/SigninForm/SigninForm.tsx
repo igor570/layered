@@ -37,7 +37,7 @@ function SignInForm({ type }: SignInFormProps) {
   };
 
   return (
-    <div data-testid="sign-in-form" className="sign-in-form">
+    <div data-testid='sign-in-form' className='sign-in-form'>
       <h2>{formTitle}</h2>
       <form
         onSubmit={(event) => {
@@ -46,22 +46,18 @@ function SignInForm({ type }: SignInFormProps) {
         }}
       >
         <input
-          type="email"
-          placeholder="Email"
+          type='email'
+          placeholder='Email'
           value={email}
-          onInput={(event: FormEvent<HTMLInputElement>) =>
-            setEmail(event.currentTarget.value)
-          }
+          onInput={(event: FormEvent<HTMLInputElement>) => setEmail(event.currentTarget.value)}
         />
         <input
-          type="password"
-          placeholder="Password"
+          type='password'
+          placeholder='Password'
           value={password}
-          onInput={(event: FormEvent<HTMLInputElement>) =>
-            setPassword(event.currentTarget.value)
-          }
+          onInput={(event: FormEvent<HTMLInputElement>) => setPassword(event.currentTarget.value)}
         />
-        <button type="submit">{formTitle}</button>
+        <button type='submit'>{formTitle}</button>
       </form>
     </div>
   );
