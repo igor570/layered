@@ -37,7 +37,7 @@ function SignInForm({type}: SignInFormProps) {
     }
 
     return (
-        <div className="sign-in-form">
+        <div data-testid="sign-in-form" className="sign-in-form">
             <h2>{ formTitle }</h2>
             <form onSubmit={ (event) => {
                 event.preventDefault();
