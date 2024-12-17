@@ -1,8 +1,9 @@
 {
   "tasks": {
     "dev": "deno run --allow-all --env-file --watch main.ts",
-    "test": "deno test --allow-all --env-file --watch ./tests/*"
+    "test": "deno test --allow-all --env-file --watch"
   },
+  "test": { "include": ["./tests/*"] },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.14",
     "@supabase/supabase-js": "jsr:@supabase/supabase-js@^2.47.7"
