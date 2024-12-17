@@ -1,6 +1,8 @@
 import './SignInForm.scss';
 import { FormEvent, useState } from 'react';
 
+import './SignInForm.scss';
+
 export type SignInFormProps = {
     type: 'registration' | 'login';
 }
@@ -35,7 +37,7 @@ function SignInForm({type}: SignInFormProps) {
     }
 
     return (
-        <div className="signin-form">
+        <div className="sign-in-form">
             <h2>{ formTitle }</h2>
             <form onSubmit={ (event) => {
                 event.preventDefault();
