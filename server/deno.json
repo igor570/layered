@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --allow-all --env-file --watch main.ts"
+    "dev": "deno run --allow-all --env-file --watch main.ts",
+    "test": "deno test --allow-all --env-file --watch ./tests/*"
   },
   "imports": {
     "@hono/hono": "jsr:@hono/hono@^4.6.14",
