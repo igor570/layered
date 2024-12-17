@@ -1,11 +1,11 @@
-import './SigninForm.scss';
+import './SignInForm.scss';
 import { FormEvent, useState } from 'react';
 
-export type SigninFormProps = {
+export type SignInFormProps = {
     type: 'registration' | 'login';
 }
 
-function SigninForm({type}: SigninFormProps) {
+function SignInForm({type}: SignInFormProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -51,4 +51,4 @@ function SigninForm({type}: SigninFormProps) {
     );
 }
 
-export default SigninForm;
+export default SignInForm;
