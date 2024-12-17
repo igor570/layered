@@ -1,5 +1,5 @@
 // todo ask Igor to setup chromatic for storybook on his user, it needs to be setup by project author
-import type { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import SigninForm from './SigninForm.tsx';
 
 const meta: Meta<typeof SigninForm> = {
@@ -7,3 +7,9 @@ const meta: Meta<typeof SigninForm> = {
 };
 
 export default meta;
+
+type Story = StoryObj<typeof SigninForm>;
+
+export const defaultStory: Story = {
+    render: () => <SigninForm />
+}
