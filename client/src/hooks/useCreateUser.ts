@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
+// todo have check for is dev environment and change url for live site
 const baseurl = 'http://localhost:8000';
 
 interface Payload {
