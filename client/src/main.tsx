@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={appClient}>
       <BrowserRouter>
         <Routes>
-          {/* todo change home route to /, or make login form landing page */}
+          {/* todo change home route to /, but set up signup form as auth guard */}
           <Route path='/home' element={<Home />} />
           <Route path='/signup' element={<SigninForm type='registration' />} />
           <Route path='/login' element={<SigninForm type='login' />} />
