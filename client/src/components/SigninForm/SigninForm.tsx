@@ -38,7 +38,7 @@ export const SignInForm = ({ type }: SignInFormProps) => {
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
   const isLogin = type === 'login';
-  const formTitle = isLogin ? 'Login' : 'Sign Up';
+  const formText = isLogin ? 'Login' : 'Sign Up';
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     navigate('/home');
@@ -55,13 +55,13 @@ export const SignInForm = ({ type }: SignInFormProps) => {
   return (
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
-        <h2>{formTitle}</h2>
+        <h2>{formText}</h2>
         <input {...register('email')} type='text' placeholder='Email' />
         {errors.email && <div className='error'>{errors.email.message}</div>}
         <input {...register('password')} type='password' placeholder='Password' />
         {errors.password && <div className='error'>{errors.password.message}</div>}
         <button disabled={isSubmitting} type='submit'>
-          {isSubmitting ? 'Loading...' : 'Submit'}
+          {isSubmitting ? 'Loading...' : formText}
         </button>
       </form>
     </>
