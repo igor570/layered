@@ -8,7 +8,7 @@ describe('SignInForm', () => {
   test('It should render registration form', () => {
     render(<RegistrationStory />);
 
-    const signInFormElement = screen.queryByTestId('sign-in-form');
+    const signInFormElement = screen.queryByTestId('SignInForm');
     expect(signInFormElement).toBeInTheDocument();
     expect(screen.getByText('Sign Up')).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe('SignInForm', () => {
   test('It should render login form', () => {
     render(<LoginStory />);
 
-    const signInFormElement = screen.queryByTestId('sign-in-form');
+    const signInFormElement = screen.queryByTestId('SignInForm');
     expect(signInFormElement).toBeInTheDocument();
     expect(screen.getByText('Log In')).toBeInTheDocument();
   });

@@ -1,72 +1,65 @@
-import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 import './SignInForm.scss';
+import useCreateUser from '../../hooks/useCreateUser';
+import useLoginUser from '../../hooks/useLoginUser';
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8)
+});
+
+type FormFields = z.infer<typeof schema>;
 
 export type SignInFormProps = {
   type: 'registration' | 'login';
 };
 
-function SignInForm({ type }: SignInFormProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+export const SignInForm = ({ type }: SignInFormProps) => {
   const navigate = useNavigate();
-  const baseurl = 'http://localhost/';
-  const isLogin = type === 'login';
-  const formEndpoint = isLogin ? 'login' : 'signup';
-  const formTitle = isLogin ? 'Log In' : 'Sign Up';
+  const { mutate: createUser } = useCreateUser();
+  const { mutate: loginUser } = useLoginUser();
 
-  const handleSubmit = () => {
-    // todo if signup, error handling for invalid email and password lengths
-    // todo if login, error handling for invalid email and password format
-    // todo look at lifting state to app level and/or storing logged in state in a context
-    // todo get correct URLs in for backend and frontend routes
-    fetch(baseurl + formEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // todo improve if statement to be more specific
-        if (data) {
-          navigate('/home');
-        }
-      })
-      .catch((error) => console.error(error));
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<FormFields>({ resolver: zodResolver(schema) });
+
+  let formTitle = '';
+  const isLogin = type === 'login' ? true : false;
+
+  if (isLogin) formTitle = 'Login';
+  if (!isLogin) formTitle = 'Sign Up';
+
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    const { email, password } = data;
+    if (!isLogin) createUser({ email, password });
+    if (isLogin) {
+      loginUser({ email, password });
+      navigate('/home');
+    }
+    reset();
   };
 
   return (
-    <div data-testid='sign-in-form' className='sign-in-form'>
-      <h2>{formTitle}</h2>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          handleSubmit();
-        }}
-      >
-        <input
-          type='email'
-          placeholder='Email'
-          value={email}
-          onInput={(event: FormEvent<HTMLInputElement>) => setEmail(event.currentTarget.value)}
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          value={password}
-          onInput={(event: FormEvent<HTMLInputElement>) => setPassword(event.currentTarget.value)}
-        />
-        <button type='submit'>{formTitle}</button>
+    <>
+      <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
+        <h2>{formTitle}</h2>
+        <input {...register('email')} type='text' placeholder='Email' />
+        {errors.email && <div className='error'>{errors.email.message}</div>}
+        <input {...register('password')} type='password' placeholder='Password' />
+        {errors.password && <div className='error'>{errors.password.message}</div>}
+        <button disabled={isSubmitting} type='submit'>
+          {isSubmitting ? 'Loading...' : 'Submit'}
+        </button>
       </form>
-    </div>
+    </>
   );
-}
+};
 
 export default SignInForm;
