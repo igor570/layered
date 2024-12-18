@@ -55,7 +55,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     }
     reset();
   };
-
+  // todo add option to switch from sign up form to login and vice versa, in case the user is on the wrong page
   return (
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
