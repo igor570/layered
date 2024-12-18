@@ -2,12 +2,12 @@ import './Error.scss';
 
 type ErrorProps = { message: string };
 
-function Error({ message }: ErrorProps) {
+export const Error = ({ message }: ErrorProps) => {
   return (
     <div data-testid='error' className='error'>
       {message}
     </div>
   );
-}
+};
 
 export default Error;
