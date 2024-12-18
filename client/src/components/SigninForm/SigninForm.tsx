@@ -37,11 +37,8 @@ export const SignInForm = ({ type }: SignInFormProps) => {
     formState: { errors, isSubmitting }
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
-  let formTitle = '';
   const isLogin = type === 'login';
-
-  if (isLogin) formTitle = 'Login';
-  if (!isLogin) formTitle = 'Sign Up';
+  const formTitle = isLogin ? 'Login' : 'Sign Up';
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     const { email, password } = data;
