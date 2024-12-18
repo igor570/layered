@@ -38,7 +38,7 @@ export const SignInForm = ({ type }: SignInFormProps) => {
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
   let formTitle = '';
-  const isLogin = type === 'login' ? true : false;
+  const isLogin = type === 'login';
 
   if (isLogin) formTitle = 'Login';
   if (!isLogin) formTitle = 'Sign Up';
