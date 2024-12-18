@@ -3,9 +3,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
+import { useCreateUser, useLoginUser } from '../../hooks';
+
 import './SignInForm.scss';
-import useCreateUser from '../../hooks/useCreateUser';
-import useLoginUser from '../../hooks/useLoginUser';
 
 const schema = z.object({
   email: z.string().email(),
@@ -14,7 +14,7 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export type SignInFormProps = {
+export type SigninFormProps = {
   type: 'registration' | 'login';
 };
 
@@ -25,7 +25,7 @@ export type SignInFormProps = {
   - DISCUSS: Storing the session token given by useLoginUser hook
 */
 
-export const SignInForm = ({ type }: SignInFormProps) => {
+export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
   const { mutate: createUser } = useCreateUser();
   const { mutate: loginUser } = useLoginUser();
@@ -67,5 +67,3 @@ export const SignInForm = ({ type }: SignInFormProps) => {
     </>
   );
 };
-
-export default SignInForm;

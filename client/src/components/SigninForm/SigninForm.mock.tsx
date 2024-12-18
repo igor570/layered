@@ -1,5 +1,5 @@
 import { Mocked } from '@storybook/test';
-import SignInForm from './SignInForm';
+import { SigninForm } from './SigninForm';
 
 vi.mock('./SignInForm', () => {
   return {
@@ -9,4 +9,4 @@ vi.mock('./SignInForm', () => {
   };
 });
 
-export const mockedSignInForm = SignInForm as Mocked<typeof SignInForm>;
+export const mockedSignInForm = SigninForm as Mocked<typeof SigninForm>;

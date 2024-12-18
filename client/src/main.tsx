@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import './index.css';
 import Home from './components/Home/Home';
-import SignInForm from './components/SignInForm/SignInForm';
+import { SigninForm } from './components';
 
 const appClient = new QueryClient();
 
@@ -16,8 +16,8 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           {/* todo change home route to /, or make login form landing page */}
           <Route path='/home' element={<Home />} />
-          <Route path='/signup' element={<SignInForm type='registration' />} />
-          <Route path='/login' element={<SignInForm type='login' />} />
+          <Route path='/signup' element={<SigninForm type='registration' />} />
+          <Route path='/login' element={<SigninForm type='login' />} />
           {/* <Route path="/" element={ <Home> } /> */}
         </Routes>
       </BrowserRouter>

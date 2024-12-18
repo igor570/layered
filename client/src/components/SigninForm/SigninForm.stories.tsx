@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import SignInForm from './SignInForm';
-import { hydrateStories } from '../../utils/common.tsx';
+import { hydrateStories } from '../../utils/common';
+import { SigninForm, SigninFormProps } from './index';
 
-const meta: Meta<typeof SignInForm> = {
-  component: SignInForm,
+const meta: Meta<typeof SigninForm> = {
+  component: SigninForm,
   argTypes: {
     type: {
       options: ['registration', 'login'],
@@ -16,17 +16,17 @@ const meta: Meta<typeof SignInForm> = {
 
 export default meta;
 
-type Story = StoryObj<typeof SignInForm>;
+type Story = StoryObj<typeof SigninForm>;
 
 export const RegistrationStory: Story = {
-  render: ({ type }) => hydrateStories(<SignInForm type={type} />),
+  render: (args: SigninFormProps) => hydrateStories(<SigninForm {...args} />),
   args: {
     type: 'registration'
   }
 };
 
 export const LoginStory: Story = {
-  render: ({ type }) => hydrateStories(<SignInForm type={type} />),
+  render: (args: SigninFormProps) => hydrateStories(<SigninForm {...args} />),
   args: {
     type: 'login'
   }

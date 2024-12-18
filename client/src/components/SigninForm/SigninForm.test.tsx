@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
 
-import * as SignInFormStories from './SignInForm.stories';
+import * as SignInFormStories from './SigninForm.stories';
 
 const { RegistrationStory, LoginStory } = composeStories(SignInFormStories);
 

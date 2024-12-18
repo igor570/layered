@@ -24,7 +24,7 @@ const postSignup = async ({ email, password }: Payload): Promise<void> => {
   }
 };
 
-const useCreateUser = () => {
+export const useCreateUser = () => {
   const mutation = useMutation({
     mutationFn: postSignup,
     onSuccess: () => {
@@ -37,5 +37,3 @@ const useCreateUser = () => {
 
   return mutation;
 };
-
-export default useCreateUser;

@@ -12,7 +12,7 @@ interface Payload {
   - Potentially consolidate the functions.
 */
 
-const postLogin = async ({ email, password }: Payload): Promise<void> => {
+export const postLogin = async ({ email, password }: Payload): Promise<void> => {
   const response = await fetch(baseurl + '/login', {
     method: 'POST',
     headers: {
@@ -28,7 +28,7 @@ const postLogin = async ({ email, password }: Payload): Promise<void> => {
   }
 };
 
-const useLoginUser = () => {
+export const useLoginUser = () => {
   const mutation = useMutation({
     mutationFn: postLogin,
     onSuccess: () => {
@@ -41,5 +41,3 @@ const useLoginUser = () => {
 
   return mutation;
 };
-
-export default useLoginUser;
