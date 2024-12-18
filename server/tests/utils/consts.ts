@@ -4,6 +4,6 @@ export interface Payload {
 }
 
 export const mockPayload: Payload = {
-  email: "test@example.com",
-  password: "securePassword123",
+  email: 'test@example.com',
+  password: 'securePassword123'
 };

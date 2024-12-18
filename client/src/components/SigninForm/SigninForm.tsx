@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { useCreateUser, useLoginUser } from '../../hooks';
 
 import './SignInForm.scss';
+import { useState } from 'react';
 
 const schema = z.object({
   email: z.string().email(),
@@ -27,6 +28,7 @@ export type SigninFormProps = {
 
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useState(false);
   const { mutate: createUser } = useCreateUser();
   const { mutate: loginUser } = useLoginUser();
 
@@ -37,14 +39,16 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     formState: { errors, isSubmitting }
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
-  const isLogin = type === 'login';
+  if (type === 'login') setIsLogin(true);
   const formText = isLogin ? 'Login' : 'Sign Up';
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    navigate('/home');
-
     const { email, password } = data;
-    if (!isLogin) createUser({ email, password });
+
+    if (!isLogin) {
+      createUser({ email, password });
+      setIsLogin(true);
+    }
     if (isLogin) {
       loginUser({ email, password });
       navigate('/home');

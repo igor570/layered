@@ -1,13 +1,10 @@
-import {
-  assertEquals,
-  assertNotStrictEquals,
-} from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { app } from "../main.ts";
-import { mockPayload, Payload } from "./utils/consts.ts";
+import { assertEquals, assertNotStrictEquals } from 'https://deno.land/std@0.224.0/assert/mod.ts';
+import { app } from '../main.ts';
+import { mockPayload, Payload } from './utils/consts.ts';
 
 //Tests
 
-Deno.test("POST /login - Successful registration", async () => {
+Deno.test('POST /login - Successful registration', async () => {
   const response = await useFetchLogin(mockPayload);
 
   assertEquals(response.status, 200);
@@ -16,8 +13,8 @@ Deno.test("POST /login - Successful registration", async () => {
   assertEquals(responseBody, `{"message":"Sign in successful","user":{}}`);
 });
 
-Deno.test("POST /login - Incorrect Payload", async () => {
-  const response = await useFetchLogin({ ...mockPayload, password: "" });
+Deno.test('POST /login - Incorrect Payload', async () => {
+  const response = await useFetchLogin({ ...mockPayload, password: '' });
 
   assertNotStrictEquals(response.status, 20);
 
@@ -29,9 +26,9 @@ Deno.test("POST /login - Incorrect Payload", async () => {
 //Helper function
 
 const useFetchLogin = async (payload: Payload) => {
-  return await app.request("http://localhost/login", {
-    method: "POST",
+  return await app.request('http://localhost/login', {
+    method: 'POST',
     body: JSON.stringify(payload),
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' }
   });
 };
