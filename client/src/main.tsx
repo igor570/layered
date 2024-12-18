@@ -11,10 +11,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* todo change home route to default, or make default login page for now */ }
-        <Route path="/home" element={ <Home /> } />
-        <Route path="/signup" element={ <SignInForm type="registration" /> } />
-        {/* <Route path="/" element={ <Home> } /> */ }
+        {/* todo change home route to /, or make login form landing page */}
+        <Route path='/home' element={<Home />} />
+        <Route path='/signup' element={<SignInForm type='registration' />} />
+        {/* <Route path="/" element={ <Home> } /> */}
       </Routes>
       <App />
     </BrowserRouter>
