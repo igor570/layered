@@ -11,7 +11,7 @@ describe('SignInForm', () => {
 
     const signInFormElement = screen.queryByTestId('SignInForm');
     expect(signInFormElement).toBeInTheDocument();
-    expect(screen.getByText('Sign Up')).toBeInTheDocument();
+    expect(screen.getAllByText('Sign Up').length).toEqual(2);
   });
 
   test('It should render login form', () => {
@@ -19,6 +19,6 @@ describe('SignInForm', () => {
 
     const signInFormElement = screen.queryByTestId('SignInForm');
     expect(signInFormElement).toBeInTheDocument();
-    expect(screen.getByText('Login')).toBeInTheDocument();
+    expect(screen.getAllByText('Login').length).toEqual(2);
   });
 });
