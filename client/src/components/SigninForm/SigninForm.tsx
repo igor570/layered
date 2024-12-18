@@ -12,7 +12,7 @@ function SignInForm({ type }: SignInFormProps) {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
-  const baseurl = 'http://localhost/'; // todo change me;
+  const baseurl = 'http://localhost/';
   const isLogin = type === 'login';
   const formEndpoint = isLogin ? 'login' : 'signup';
   const formTitle = isLogin ? 'Log In' : 'Sign Up';
@@ -21,7 +21,7 @@ function SignInForm({ type }: SignInFormProps) {
     // todo if signup, error handling for invalid email and password lengths
     // todo if login, error handling for invalid email and password format
     // todo look at lifting state to app level and/or storing logged in state in a context
-    // todo refer back to ticket for more info
+    // todo get correct URLs in for backend and frontend routes
     fetch(baseurl + formEndpoint, {
       method: 'POST',
       headers: {
