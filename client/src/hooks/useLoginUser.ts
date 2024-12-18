@@ -7,8 +7,10 @@ interface Payload {
   password: string;
 }
 
-// TODO: Test against the Dev Server to see if it works
-// TODO: Potentially consolidate the hooks into one as a lot of it is duplicated?
+/* TODOS:
+  - MUST: Store session token that his API response gives us.
+  - Potentially consolidate the functions.
+*/
 
 const postLogin = async ({ email, password }: Payload): Promise<void> => {
   const response = await fetch(baseurl + '/login', {

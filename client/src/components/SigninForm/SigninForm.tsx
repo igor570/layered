@@ -18,6 +18,13 @@ export type SignInFormProps = {
   type: 'registration' | 'login';
 };
 
+/* TODOS:
+  - Test the mutation functions to see if it works, by running the dev server and firing requests
+  - Make sure the validation holds up
+  - Check if we are navigated to Home if we login
+  - DISCUSS: Storing the session token given by useLoginUser hook
+*/
+
 export const SignInForm = ({ type }: SignInFormProps) => {
   const navigate = useNavigate();
   const { mutate: createUser } = useCreateUser();
