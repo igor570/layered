@@ -41,6 +41,8 @@ export const SignInForm = ({ type }: SignInFormProps) => {
   const formTitle = isLogin ? 'Login' : 'Sign Up';
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
+    navigate('/home');
+
     const { email, password } = data;
     if (!isLogin) createUser({ email, password });
     if (isLogin) {
