@@ -1,7 +1,7 @@
 // todo ask Igor to setup chromatic for storybook on his user, it needs to be setup by project author.
 //  It's good for visual testing
 import { Meta, StoryObj } from '@storybook/react';
-import SignInForm from './SigninForm';
+import SignInForm from './SignInForm';
 
 const meta: Meta<typeof SignInForm> = {
   component: SignInForm,

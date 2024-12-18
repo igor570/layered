@@ -3,7 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
 
-import * as SignInFormStories from './SigninForm.stories';
+import * as SignInFormStories from './SignInForm.stories';
+
 const { RegistrationStory, LoginStory } = composeStories(SignInFormStories);
 
 // Create a new QueryClient instance for each test

@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import './index.css';
-import Home from './components/Home/Home.tsx';
-import SignInForm from './components/SigninForm/SigninForm.tsx';
+import Home from './components/Home/Home';
+import SignInForm from './components/SignInForm/SignInForm';
 
 const appClient = new QueryClient();
 

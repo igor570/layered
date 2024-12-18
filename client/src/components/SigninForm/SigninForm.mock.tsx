@@ -1,5 +1,5 @@
 import { Mocked } from '@storybook/test';
-import SignInForm from './SigninForm.tsx';
+import SignInForm from './SignInForm';
 
 vi.mock('./SignInForm', () => {
   return {
