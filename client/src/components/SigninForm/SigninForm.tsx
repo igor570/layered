@@ -1,5 +1,5 @@
-import './SignInForm.scss';
 import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './SignInForm.scss';
 
@@ -11,7 +11,8 @@ function SignInForm({ type }: SignInFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const baseurl = 'https://blahblah'; // todo change me;
+  const navigate = useNavigate();
+  const baseurl = 'http://localhost/'; // todo change me;
   const isLogin = type === 'login';
   const formEndpoint = isLogin ? 'login' : 'signup';
   const formTitle = isLogin ? 'Log In' : 'Sign Up';
@@ -32,7 +33,12 @@ function SignInForm({ type }: SignInFormProps) {
       })
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // todo improve if statement to be more specific
+        if (data) {
+          navigate('/home');
+        }
+      })
       .catch((error) => console.error(error));
   };
 
