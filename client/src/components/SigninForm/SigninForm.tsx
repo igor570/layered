@@ -1,12 +1,11 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { useCreateUser, useLoginUser } from '../../hooks';
-
 import './SignInForm.scss';
-import { useEffect, useState } from 'react';
 
 const schema = z.object({
   email: z.string().email(),
