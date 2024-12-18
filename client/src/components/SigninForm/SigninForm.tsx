@@ -40,9 +40,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
 
   const formText = isLogin ? 'Login' : 'Sign Up';
 
-  useEffect(() => {
-    if (type === 'login') setIsLogin(true);
-  }, [type]);
+  useEffect(() => setIsLogin(type === 'login'), [type]);
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     const { email, password } = data;
