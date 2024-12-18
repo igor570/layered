@@ -55,7 +55,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     }
     reset();
   };
-  // todo add option to switch from sign up form to login and vice versa, in case the user is on the wrong page
+
   return (
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
@@ -68,6 +68,9 @@ export const SigninForm = ({ type }: SigninFormProps) => {
           {isSubmitting ? 'Loading...' : formText}
         </button>
       </form>
+      <span className='form-link' onClick={() => navigate(isLogin ? '../signup' : '../login')}>
+        {isLogin ? 'Are you a new user? Sign up here.' : 'Have you already got an account? Log in here.'}
+      </span>
     </>
   );
 };
