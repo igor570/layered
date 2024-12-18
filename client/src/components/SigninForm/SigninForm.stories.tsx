@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { hydrateStories } from '../../utils/common';
-import { SigninForm, SigninFormProps } from './index';
+import { SigninForm, SigninFormProps } from './SigninForm';
 
 const meta: Meta<typeof SigninForm> = {
   component: SigninForm,
