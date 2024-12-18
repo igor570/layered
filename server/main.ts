@@ -2,7 +2,7 @@ import { db } from "./db/db.ts";
 import { Hono } from "@hono/hono";
 import { APIResponse } from "./utils/utils.ts";
 
-const app = new Hono();
+export const app = new Hono();
 
 app.post("/signup", async (ctx) => {
   const { email, password } = await ctx.req.json();
@@ -12,7 +12,7 @@ app.post("/signup", async (ctx) => {
 
     if (error) APIResponse("Sign up failed: ", error.status);
 
-    return APIResponse("User registered", 201);
+    return ctx.json({ message: "User has been registered" }, 201);
   }
 });
 
