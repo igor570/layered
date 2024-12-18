@@ -2,10 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { SigninForm, Home } from './components';
 
 import './index.css';
-import Home from './components/Home/Home';
-import { SigninForm } from './components';
 
 const appClient = new QueryClient();
 

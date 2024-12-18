@@ -9,5 +9,3 @@ export const Error = ({ message }: ErrorProps) => {
     </div>
   );
 };
-
-export default Error;
