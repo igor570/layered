@@ -1,7 +1,8 @@
 :root {
     --primary-color: #09090b;
-    --secondary-color: #FFF;
-    --font: 'Geist Sans'
+    --secondary-color: #e4e4e7;
+    --error: #ff0000;
+    --font: 'Geist Sans';
 }
 
 *,
