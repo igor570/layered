@@ -41,11 +41,15 @@ app.post('/login', async (ctx) => {
 
     if (error) APIResponse(error.message, 400);
 
+    const sessionData = {
+      sessionToken: data.session?.access_token,
+      refreshToken: data.session?.refresh_token
+    };
+
     return ctx.json({
       message: 'Sign in successful',
-      user: {
-        sessionToken: data.session?.access_token
-      }
+      user: data.user,
+      session: sessionData
     });
   }
 

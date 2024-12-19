@@ -8,6 +8,10 @@ import { FormFields, schema } from './consts';
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
 
+/* Left to do:
+  1. zustand store for the login data
+  2. make components out of the jsx here
+*/
 export type SigninFormProps = {
   type: 'registration' | 'login';
 };
