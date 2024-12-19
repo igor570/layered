@@ -7,17 +7,15 @@ import { FormFields, schema } from './consts';
 
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
+import { useLoginStore } from '../../stores/useLoginStore';
 
-/* Left to do:
-  1. zustand store for the login data
-  2. make components out of the jsx here
-*/
 export type SigninFormProps = {
   type: 'registration' | 'login';
 };
 
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
+  const setIsLoggedIn = useLoginStore((s) => s.setIsLoggedIn);
   const [isLogin, setIsLogin] = useState(false);
   const { mutateAsync: createUser } = useCreateUser();
   const { mutateAsync: loginUser } = useLoginUser();
@@ -41,6 +39,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
         await createUser({ email, password });
       }
       await loginUser({ email, password });
+      setIsLoggedIn(true);
       navigate('/');
       reset();
     } catch (error) {
