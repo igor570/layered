@@ -73,24 +73,42 @@ export const SigninForm = ({ type }: SigninFormProps) => {
   return (
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
-        <h2>{formText}</h2>
-        <input {...register('email')} type='text' placeholder='Email' />
-        {errors.email && <div className='error-message'>{errors.email.message}</div>}
-        <input {...register('password')} type='password' placeholder='Password' />
-        {errors.password && <div className='error-message'>{errors.password.message}</div>}
+        <h2 className='form-header'>{formText}</h2>
+        <div className='form-group'>
+          <label className='form-label' htmlFor='email'>
+            Email
+          </label>
+          <input className='form-input' {...register('email')} type='text' placeholder='Email' />
+          {errors.email && <div className='form-error'>{errors.email.message}</div>}
+        </div>
+        <div className='form-group'>
+          <label className='form-label' htmlFor='password'>
+            Password
+          </label>
+          <input className='form-input' {...register('password')} type='password' placeholder='Password' />
+          {errors.password && <div className='form-error'>{errors.password.message}</div>}
+        </div>
         {!isLogin && (
-          <>
-            <input {...register('confirmPassword')} type='password' placeholder='Confirm Password' />
-            {errors.confirmPassword && <div className='error-message'>{errors?.confirmPassword.message}</div>}
-          </>
+          <div className='form-group'>
+            <label className='form-label' htmlFor='confirmPassword'>
+              Confirm Password
+            </label>
+            <input
+              className='form-input'
+              {...register('confirmPassword')}
+              type='password'
+              placeholder='Confirm Password'
+            />
+            {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
+          </div>
         )}
-        <button disabled={isSubmitting} type='submit'>
+        <button className='form-button' disabled={isSubmitting} type='submit'>
           {isSubmitting ? 'Loading...' : formText}
         </button>
+        <span className='form-link' onClick={() => navigate(isLogin ? '../signup' : '../login')}>
+          {isLogin ? 'Are you a new user? Sign up here.' : 'Have you already got an account? Log in here.'}
+        </span>
       </form>
-      <span className='form-link' onClick={() => navigate(isLogin ? '../signup' : '../login')}>
-        {isLogin ? 'Are you a new user? Sign up here.' : 'Have you already got an account? Log in here.'}
-      </span>
     </>
   );
 };
