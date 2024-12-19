@@ -5,9 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
 import { FormFields, schema } from './consts';
 
+import { useLoginStore } from '../../stores';
 import { useCreateUser, useLoginUser } from '../../hooks';
+
 import './SignInForm.scss';
-import { useLoginStore } from '../../stores/useLoginStore';
 
 export interface SigninFormProps {
   type: 'registration' | 'login';
