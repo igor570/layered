@@ -1,3 +1,8 @@
+$primary-color: #09090b;
+$secondary-color: #e4e4e7;
+$error: #ff0000;
+$font: 'Geist Sans';
+
 *,
 *:before,
 *:after {
@@ -59,7 +64,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -76,6 +80,19 @@ main {
 
 body {
   line-height: 1;
+  width: 100vw;
+  height: 100vh;
+  background: $primary-color;
+  color: $secondary-color;
+  font-family: $font, sans-serif;
+
+  #root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 ol,
@@ -92,7 +109,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
