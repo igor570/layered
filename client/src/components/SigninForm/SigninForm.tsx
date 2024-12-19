@@ -7,7 +7,6 @@ import { FormFields, schema } from './consts';
 
 import { useLoginStore } from '../../stores';
 import { useCreateUser, useLoginUser } from '../../hooks';
-
 import './SignInForm.scss';
 
 export interface SigninFormProps {
@@ -41,8 +40,8 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       }
       await loginUser({ email, password });
       setIsLoggedIn(true);
-      navigate('/');
       reset();
+      navigate('/');
     } catch (error) {
       toast.error('An error occurred, please try again.');
       console.error(error);
