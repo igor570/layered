@@ -7,9 +7,21 @@ import { z } from 'zod';
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
 
+// todo ask Igor if we want different schema for different forms.
+//  Couple reasons:
+//    Do we want a password confirmation field on the signup form?
+//    Most sites have a more generic error message on their login page, so they don't give away clues about their password criteria to hackers.
+const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/);
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(8)
+  password: z
+    .string()
+    .min(8, {
+      message: 'Your password must be at least 8 characters long'
+    })
+    .regex(passwordValidation, {
+      message: 'Your password must contain a lowercase letter, uppercase letter, number, and symbol.'
+    })
 });
 
 type FormFields = z.infer<typeof schema>;
