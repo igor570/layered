@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ToastContainer, toast } from 'react-toastify';
 import { z } from 'zod';
 
 import { useCreateUser, useLoginUser } from '../../hooks';
@@ -42,8 +43,8 @@ export type SigninFormProps = {
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
-  const { mutate: createUser } = useCreateUser();
-  const { mutate: loginUser } = useLoginUser();
+  const { mutateAsync: createUser } = useCreateUser();
+  const { mutateAsync: loginUser } = useLoginUser();
 
   const {
     register,
@@ -56,18 +57,22 @@ export const SigninForm = ({ type }: SigninFormProps) => {
 
   useEffect(() => setIsLogin(type === 'login'), [type]);
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const { email, password } = data;
 
-    if (!isLogin) {
-      createUser({ email, password });
-      navigate('/home');
+    try {
+      if (!isLogin) {
+        await createUser({ email, password });
+        await loginUser({ email, password });
+      } else {
+        await loginUser({ email, password });
+      }
+      navigate('/');
+      reset();
+    } catch (error) {
+      toast.error('An error occured, please try again.');
+      console.error(error);
     }
-    if (isLogin) {
-      loginUser({ email, password });
-      navigate('/home');
-    }
-    reset();
   };
 
   return (
@@ -100,6 +105,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
           {isLogin ? 'Are you a new user? Sign up here.' : 'Have you already got an account? Log in here.'}
         </span>
       </form>
+      <ToastContainer />
     </>
   );
 };

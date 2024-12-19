@@ -1,7 +1,7 @@
 import { db } from './db/db.ts';
 import { Hono } from '@hono/hono';
 import { cors } from '@hono/hono/cors';
-import { setCookie } from '@hono/hono/cookie';
+// import { setCookie } from '@hono/hono/cookie';
 import { APIResponse } from './utils/utils.ts';
 
 export const app = new Hono();
@@ -29,13 +29,15 @@ app.post('/login', async (ctx) => {
       password
     });
 
-    if (data.session?.access_token) {
-      setCookie(ctx, data.session.access_token, 'session_token', {
-        httpOnly: true,
-        sameSite: 'strict',
-        maxAge: 1000 * 60 * 60 * 24
-      });
-    }
+    //TODO: Revisit this
+
+    // if (data.session?.access_token) {
+    //   setCookie(ctx, data.session.access_token, 'session_token', {
+    //     httpOnly: true,
+    //     sameSite: 'strict',
+    //     maxAge: 1000 * 60 * 60 * 24
+    //   });
+    // }
 
     if (error) APIResponse(error.message, 400);
 
