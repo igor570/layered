@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter, Navigate } from 'react-router-dom';
-import { useLoginStore } from '../stores/useLoginStore';
+import { useLoginStore } from '../stores';
 
 const createTestQueryClient = () =>
   new QueryClient({
