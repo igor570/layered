@@ -69,9 +69,6 @@ video {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     text-size-adjust: none;
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    font-family: var(--font), sans-serif;
 }
 
 footer,
@@ -86,6 +83,9 @@ body {
     line-height: 1;
     width: 100vw;
     height: 100vh;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--font), sans-serif;
 
     #root {
         width: 100%;
