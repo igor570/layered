@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SigninForm, Home } from './components';
 import { ProtectedRoute } from './utils/common';
 
-import './index.css';
+import './index.scss';
 
 const appClient = new QueryClient();
 

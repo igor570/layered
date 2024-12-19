@@ -1,13 +1,15 @@
+@import "../../index";
+
 .sign-in-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   padding: 15px;
-  background: var(--primary-color);
+  background: $primary-color;
 
   .form-header {
-    color: var(--secondary-color);
+    color: $secondary-color;
     font-weight: bold;
   }
 
@@ -23,11 +25,11 @@
       border-radius: 5px;
       background: transparent;
       outline: none;
-      border: 1px solid var(--secondary-color);
-      color: var(--secondary-color);
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
 
       &::placeholder {
-        color: var(--secondary-color);
+        color: $secondary-color;
         font-size: 12px;
         opacity: 0.5;
       }
@@ -35,7 +37,7 @@
 
     .form-error {
       max-width: 300px;
-      color: var(--error);
+      color: $error;
       font-size: 12px;
       padding-top: 2px;
       text-wrap: wrap;
@@ -49,8 +51,8 @@
     margin: 0;
     padding: 8px 16px;
     width: 100%;
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    background: $secondary-color;
+    color: $primary-color;
     border-radius: 6px;
     cursor: pointer;
     border: none;
@@ -60,7 +62,7 @@
 
   .form-link {
     cursor: pointer;
-    color: var(--secondary-color);
+    color: $secondary-color;
     font-size: 12px;
   }
 }
