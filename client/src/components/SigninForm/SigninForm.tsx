@@ -63,14 +63,12 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     try {
       if (!isLogin) {
         await createUser({ email, password });
-        await loginUser({ email, password });
-      } else {
-        await loginUser({ email, password });
       }
+      await loginUser({ email, password });
       navigate('/');
       reset();
     } catch (error) {
-      toast.error('An error occured, please try again.');
+      toast.error('An error occurred, please try again.');
       console.error(error);
     }
   };
