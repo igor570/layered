@@ -9,9 +9,9 @@ import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
 import { useLoginStore } from '../../stores/useLoginStore';
 
-export type SigninFormProps = {
+export interface SigninFormProps {
   type: 'registration' | 'login';
-};
+}
 
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();

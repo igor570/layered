@@ -20,32 +20,9 @@ export const hydrateStories = (children: ReactElement): ReactElement => {
   );
 };
 
-// todo get correct user type. Should be an obj with isLoggedIn property, then check that in if statement
-
-export interface User {
-  id: string;
-  aud: string;
-  role: string;
-  email: string;
-  emailConfirmedAt: string;
-  phone: string;
-  lastSignInAt: string;
-  appMetaData: AppMetaData;
-}
-
-interface AppMetaData {
-  provider: string;
-  providers: string[];
-}
-
 interface ProtectedRouteProps {
   children: ReactElement;
   authRoute: string;
-}
-
-export interface Session {
-  sessionToken: string;
-  refreshToken: string;
 }
 
 export const ProtectedRoute = ({ children, authRoute }: ProtectedRouteProps) => {
