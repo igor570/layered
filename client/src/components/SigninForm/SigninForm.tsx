@@ -75,24 +75,15 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
         <div className='form-group'>
-          <label className='form-label' htmlFor='email'>
-            Email
-          </label>
           <input className='form-input' {...register('email')} type='text' placeholder='Email' />
           {errors.email && <div className='form-error'>{errors.email.message}</div>}
         </div>
         <div className='form-group'>
-          <label className='form-label' htmlFor='password'>
-            Password
-          </label>
           <input className='form-input' {...register('password')} type='password' placeholder='Password' />
           {errors.password && <div className='form-error'>{errors.password.message}</div>}
         </div>
         {!isLogin && (
           <div className='form-group'>
-            <label className='form-label' htmlFor='confirmPassword'>
-              Confirm Password
-            </label>
             <input
               className='form-input'
               {...register('confirmPassword')}
