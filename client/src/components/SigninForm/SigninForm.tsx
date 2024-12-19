@@ -7,22 +7,24 @@ import { z } from 'zod';
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
 
-// todo ask Igor if we want different schema for different forms.
-//  Couple reasons:
-//    Do we want a password confirmation field on the signup form?
-//    Most sites have a more generic error message on their login page, so they don't give away clues about their password criteria to hackers.
 const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/);
-const schema = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, {
-      message: 'Your password must be at least 8 characters long'
-    })
-    .regex(passwordValidation, {
-      message: 'Your password must contain a lowercase letter, uppercase letter, number, and symbol.'
-    })
-});
+const schema = z
+  .object({
+    email: z.string().email(),
+    password: z
+      .string()
+      .min(8, {
+        message: 'Your password must be at least 8 characters long'
+      })
+      .regex(passwordValidation, {
+        message: 'Your password must contain a lowercase letter, uppercase letter, number, and symbol.'
+      }),
+    confirmPassword: z.string()
+  })
+  .refine((data) => data.password === data?.confirmPassword, {
+    message: 'Passwords must match.',
+    path: ['confirmPassword']
+  });
 
 type FormFields = z.infer<typeof schema>;
 
@@ -59,7 +61,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
 
     if (!isLogin) {
       createUser({ email, password });
-      setIsLogin(true);
+      navigate('/home');
     }
     if (isLogin) {
       loginUser({ email, password });
@@ -73,9 +75,15 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2>{formText}</h2>
         <input {...register('email')} type='text' placeholder='Email' />
-        {errors.email && <div className='error'>{errors.email.message}</div>}
+        {errors.email && <div className='error-message'>{errors.email.message}</div>}
         <input {...register('password')} type='password' placeholder='Password' />
-        {errors.password && <div className='error'>{errors.password.message}</div>}
+        {errors.password && <div className='error-message'>{errors.password.message}</div>}
+        {!isLogin && (
+          <>
+            <input {...register('confirmPassword')} type='password' placeholder='Confirm Password' />
+            {errors.confirmPassword && <div className='error-message'>{errors?.confirmPassword.message}</div>}
+          </>
+        )}
         <button disabled={isSubmitting} type='submit'>
           {isSubmitting ? 'Loading...' : formText}
         </button>
