@@ -3,42 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
-import { z } from 'zod';
+import { FormFields, schema } from './consts';
 
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
 
-const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/);
-const schema = z
-  .object({
-    email: z.string().email(),
-    password: z
-      .string()
-      .min(8, {
-        message: 'Your password must be at least 8 characters long'
-      })
-      .regex(passwordValidation, {
-        message: 'Your password must contain a lowercase letter, uppercase letter, number, and symbol.'
-      }),
-    confirmPassword: z.string()
-  })
-  .refine((data) => data.password === data?.confirmPassword, {
-    message: 'Passwords must match.',
-    path: ['confirmPassword']
-  });
-
-type FormFields = z.infer<typeof schema>;
-
 export type SigninFormProps = {
   type: 'registration' | 'login';
 };
-
-/* TODOS:
-  - Test the mutation functions to see if it works, by running the dev server and firing requests
-  - Make sure the validation holds up
-  - Check if we are navigated to Home if we login
-  - DISCUSS: Storing the session token given by useLoginUser hook
-*/
 
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
