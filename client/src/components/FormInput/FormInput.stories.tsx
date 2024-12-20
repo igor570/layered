@@ -9,10 +9,5 @@ export default meta;
 type Story = StoryObj<typeof FormInput>;
 
 export const FormInputStory: Story = {
-  render: () =>
-    hydrateStories(
-      <FormInput>
-        <input className='form-input' type='text' placeholder='Email' />
-      </FormInput>
-    )
+  render: () => hydrateStories(<FormInput type='email' />)
 };
