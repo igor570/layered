@@ -5,5 +5,9 @@ type FormGroupProps = {
 };
 
 export const FormGroup = ({ children }: FormGroupProps) => {
-  return <div className='form-group'>{children}</div>;
+  return (
+    <div data-testid='form-group' className='form-group'>
+      {children}
+    </div>
+  );
 };
