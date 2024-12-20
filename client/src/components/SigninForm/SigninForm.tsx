@@ -56,28 +56,17 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
         <FormGroup>
-          <FormInput>
-            <input className='form-input' {...register('email')} type='text' placeholder='Email' />
-            {errors.email && <div className='form-error'>{errors.email.message}</div>}
-          </FormInput>
+          <FormInput type='email' inputProps={register('email')} />
+          {errors.email && <div className='form-error'>{errors.email.message}</div>}
         </FormGroup>
         <FormGroup>
-          <FormInput>
-            <input className='form-input' {...register('password')} type='password' placeholder='Password' />
-            {errors.password && <div className='form-error'>{errors.password.message}</div>}
-          </FormInput>
+          <FormInput type='password' inputProps={register('password')} />
+          {errors.password && <div className='form-error'>{errors.password.message}</div>}
         </FormGroup>
         {!isLogin && (
           <FormGroup>
-            <FormInput>
-              <input
-                className='form-input'
-                {...register('confirmPassword')}
-                type='password'
-                placeholder='Confirm Password'
-              />
-              {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
-            </FormInput>
+            <FormInput type='password' inputProps={register('confirmPassword')} placeholder='Confirm password' />
+            {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
           </FormGroup>
         )}
         <button className='form-button' disabled={isSubmitting} type='submit'>
