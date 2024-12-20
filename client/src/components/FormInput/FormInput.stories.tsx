@@ -12,7 +12,7 @@ export const FormInputStory: Story = {
   render: () =>
     hydrateStories(
       <FormInput>
-        <input />
+        <input className='form-input' type='text' placeholder='Email' />
       </FormInput>
     )
 };
