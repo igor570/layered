@@ -1,0 +1,17 @@
+@use "../../index" as *;
+
+.form-input {
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  background: transparent;
+  outline: none;
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
+
+  &::placeholder {
+    color: $secondary-color;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+}
