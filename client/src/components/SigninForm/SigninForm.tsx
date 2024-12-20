@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
-import { FormFields, schema } from './consts';
 
-import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
+import { FormFields, schema } from './consts';
+import { useCreateUser, useLoginUser } from '../../hooks';
 import { FormGroup } from '../FormGroup';
+import { FormInput } from '../FormInput';
 
 /* Left to do:
   1. zustand store for the login data
@@ -55,22 +56,28 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
         <FormGroup>
-          <input className='form-input' {...register('email')} type='text' placeholder='Email' />
-          {errors.email && <div className='form-error'>{errors.email.message}</div>}
+          <FormInput>
+            <input className='form-input' {...register('email')} type='text' placeholder='Email' />
+            {errors.email && <div className='form-error'>{errors.email.message}</div>}
+          </FormInput>
         </FormGroup>
         <FormGroup>
-          <input className='form-input' {...register('password')} type='password' placeholder='Password' />
-          {errors.password && <div className='form-error'>{errors.password.message}</div>}
+          <FormInput>
+            <input className='form-input' {...register('password')} type='password' placeholder='Password' />
+            {errors.password && <div className='form-error'>{errors.password.message}</div>}
+          </FormInput>
         </FormGroup>
         {!isLogin && (
           <FormGroup>
-            <input
-              className='form-input'
-              {...register('confirmPassword')}
-              type='password'
-              placeholder='Confirm Password'
-            />
-            {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
+            <FormInput>
+              <input
+                className='form-input'
+                {...register('confirmPassword')}
+                type='password'
+                placeholder='Confirm Password'
+              />
+              {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
+            </FormInput>
           </FormGroup>
         )}
         <button className='form-button' disabled={isSubmitting} type='submit'>
