@@ -13,9 +13,7 @@ export const FormGroupStory: Story = {
   render: () =>
     hydrateStories(
       <FormGroup>
-        <FormInput>
-          <input className='form-input' type='text' placeholder='Email' />
-        </FormInput>
+        <FormInput type='email' />
       </FormGroup>
     )
 };
