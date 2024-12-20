@@ -1,4 +1,4 @@
-@import "../../index";
+@use "../../index" as *;
 
 .sign-in-form {
   display: flex;
@@ -11,38 +11,6 @@
   .form-header {
     color: $secondary-color;
     font-weight: bold;
-  }
-
-  .form-group {
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    .form-input {
-      display: flex;
-      padding: 10px;
-      border-radius: 5px;
-      background: transparent;
-      outline: none;
-      border: 1px solid $secondary-color;
-      color: $secondary-color;
-
-      &::placeholder {
-        color: $secondary-color;
-        font-size: 12px;
-        opacity: 0.5;
-      }
-    }
-
-    .form-error {
-      max-width: 300px;
-      color: $error;
-      font-size: 12px;
-      padding-top: 2px;
-      text-wrap: wrap;
-      line-height: normal;
-    }
   }
 
   .form-button {
