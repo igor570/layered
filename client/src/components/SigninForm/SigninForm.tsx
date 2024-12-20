@@ -7,6 +7,7 @@ import { FormFields, schema } from './consts';
 
 import { useCreateUser, useLoginUser } from '../../hooks';
 import './SignInForm.scss';
+import { FormGroup } from '../FormGroup';
 
 /* Left to do:
   1. zustand store for the login data
@@ -53,16 +54,16 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
-        <div className='form-group'>
+        <FormGroup>
           <input className='form-input' {...register('email')} type='text' placeholder='Email' />
           {errors.email && <div className='form-error'>{errors.email.message}</div>}
-        </div>
-        <div className='form-group'>
+        </FormGroup>
+        <FormGroup>
           <input className='form-input' {...register('password')} type='password' placeholder='Password' />
           {errors.password && <div className='form-error'>{errors.password.message}</div>}
-        </div>
+        </FormGroup>
         {!isLogin && (
-          <div className='form-group'>
+          <FormGroup>
             <input
               className='form-input'
               {...register('confirmPassword')}
@@ -70,7 +71,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
               placeholder='Confirm Password'
             />
             {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
-          </div>
+          </FormGroup>
         )}
         <button className='form-button' disabled={isSubmitting} type='submit'>
           {isSubmitting ? 'Loading...' : formText}
