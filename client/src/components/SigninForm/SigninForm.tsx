@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
-import { FormFields, schema } from './consts';
 
 import { useLoginStore } from '../../stores';
 import { useCreateUser, useLoginUser } from '../../hooks';
+
+import { FormFields, schema } from './consts';
+import { FormGroup } from '../FormGroup';
+import { FormInput } from '../FormInput';
+
 import './SignInForm.scss';
 
 export interface SigninFormProps {
@@ -52,24 +56,19 @@ export const SigninForm = ({ type }: SigninFormProps) => {
     <>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
-        <div className='form-group'>
-          <input className='form-input' {...register('email')} type='text' placeholder='Email' />
+        <FormGroup>
+          <FormInput type='email' inputProps={register('email')} />
           {errors.email && <div className='form-error'>{errors.email.message}</div>}
-        </div>
-        <div className='form-group'>
-          <input className='form-input' {...register('password')} type='password' placeholder='Password' />
+        </FormGroup>
+        <FormGroup>
+          <FormInput type='password' inputProps={register('password')} />
           {errors.password && <div className='form-error'>{errors.password.message}</div>}
-        </div>
+        </FormGroup>
         {!isLogin && (
-          <div className='form-group'>
-            <input
-              className='form-input'
-              {...register('confirmPassword')}
-              type='password'
-              placeholder='Confirm Password'
-            />
+          <FormGroup>
+            <FormInput type='password' inputProps={register('confirmPassword')} placeholder='Confirm password' />
             {errors.confirmPassword && <div className='form-error'>{errors?.confirmPassword.message}</div>}
-          </div>
+          </FormGroup>
         )}
         <button className='form-button' disabled={isSubmitting} type='submit'>
           {isSubmitting ? 'Loading...' : formText}
