@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { User, Session } from '../utils/common';
+import { User, Session } from '../utils';
 
 const baseurl = 'http://localhost:8000';
 

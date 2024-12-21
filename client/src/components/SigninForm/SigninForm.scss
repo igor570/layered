@@ -1,4 +1,4 @@
-@import "../../index";
+@use '../../index' as *;
 
 .sign-in-form {
   display: flex;
