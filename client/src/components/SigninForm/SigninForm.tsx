@@ -4,22 +4,22 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
 
-import './SignInForm.scss';
-import { FormFields, schema } from './consts';
+import { useLoginStore } from '../../stores';
 import { useCreateUser, useLoginUser } from '../../hooks';
+
+import { FormFields, schema } from './consts';
 import { FormGroup } from '../FormGroup';
 import { FormInput } from '../FormInput';
 
-/* Left to do:
-  1. zustand store for the login data
-  2. make components out of the jsx here
-*/
-export type SigninFormProps = {
+import './SignInForm.scss';
+
+export interface SigninFormProps {
   type: 'registration' | 'login';
-};
+}
 
 export const SigninForm = ({ type }: SigninFormProps) => {
   const navigate = useNavigate();
+  const setIsLoggedIn = useLoginStore((s) => s.setIsLoggedIn);
   const [isLogin, setIsLogin] = useState(false);
   const { mutateAsync: createUser } = useCreateUser();
   const { mutateAsync: loginUser } = useLoginUser();
@@ -43,8 +43,9 @@ export const SigninForm = ({ type }: SigninFormProps) => {
         await createUser({ email, password });
       }
       await loginUser({ email, password });
-      navigate('/');
+      setIsLoggedIn(true);
       reset();
+      navigate('/');
     } catch (error) {
       toast.error('An error occurred, please try again.');
       console.error(error);

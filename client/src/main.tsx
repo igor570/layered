@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
           <Route
             path='/'
             element={
-              <ProtectedRoute user={true} authRoute='/signup'>
+              <ProtectedRoute authRoute='/signup'>
                 <Home />
               </ProtectedRoute>
             }
