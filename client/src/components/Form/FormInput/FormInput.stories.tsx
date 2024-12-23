@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { hydrateStories } from '../../utils/common';
+import { hydrateStories } from '../../../utils/common';
 import { FormInput } from './FormInput';
 
 const meta: Meta<typeof FormInput> = { component: FormInput };

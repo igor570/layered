@@ -4,8 +4,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
 
-import { useLoginStore } from '../../stores';
-import { useCreateUser, useLoginUser } from '../../hooks';
+import { useLoginStore } from '../../../stores';
+import { useCreateUser, useLoginUser } from '../../../hooks';
 
 import { FormFields, schema } from './consts';
 import { FormGroup } from '../FormGroup';
