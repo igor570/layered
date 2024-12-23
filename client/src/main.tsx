@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { SigninForm, Home } from './components';
+import { SigninForm } from './components';
+import { Home } from './Pages';
 import { ProtectedRoute } from './utils/common';
 
 import './index.scss';
