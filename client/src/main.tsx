@@ -17,14 +17,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={appClient}>
       <BrowserRouter>
         <Routes>
-          <Route
-            path='/'
-            element={
-              <ProtectedRoute authRoute='/signup'>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
+          <Route path='/' element={<Home />} />
           <Route path='/signup' element={<SigninForm type='registration' />} />
           <Route path='/login' element={<SigninForm type='login' />} />
           <Route path='*' element={<Navigate to='/' replace />} />

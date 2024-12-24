@@ -1,9 +1,13 @@
 import './Home.scss';
+import { NavBar } from '../../components';
 
 export const Home = () => {
   return (
-    <div data-testid='home' className='home'>
-      homepage
+    <div className='test'>
+      <NavBar />
+      <div data-testid='home' className='home'>
+        homepage
+      </div>
     </div>
   );
 };

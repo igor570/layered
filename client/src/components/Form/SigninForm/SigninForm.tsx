@@ -53,7 +53,7 @@ export const SigninForm = ({ type }: SigninFormProps) => {
   };
 
   return (
-    <>
+    <div className='form-container'>
       <form data-testid='SignInForm' className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
         <h2 className='form-header'>{formText}</h2>
         <FormGroup>
@@ -78,6 +78,6 @@ export const SigninForm = ({ type }: SigninFormProps) => {
         </span>
       </form>
       <ToastContainer />
-    </>
+    </div>
   );
 };
