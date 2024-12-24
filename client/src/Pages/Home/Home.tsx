@@ -5,7 +5,9 @@ export const Home = () => {
   return (
     <div className='home-container'>
       <NavBar />
-      <div data-testid='home' className='home'></div>
+      <div data-testid='home' className='home'>
+        <div className='welcome-text'>Say Hello, to easy 3d sharing</div>
+      </div>
     </div>
   );
 };
