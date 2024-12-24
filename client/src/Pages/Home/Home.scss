@@ -1,5 +1,6 @@
 @use '../../index' as *;
 
-.home {
-  // todo add styling for homepage
+.home-container {
+  display: flex;
+  flex-direction: column;
 }
