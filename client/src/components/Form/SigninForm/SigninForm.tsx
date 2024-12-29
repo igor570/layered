@@ -42,12 +42,18 @@ export const SigninForm = ({ type }: SigninFormProps) => {
       if (!isLogin) {
         await createUser({ email, password });
       }
-      await loginUser({ email, password });
-      setIsLoggedIn(true);
-      reset();
-      navigate('/');
+
+      const loginResponse = await loginUser({ email, password });
+
+      if (loginResponse.success) {
+        setIsLoggedIn(true);
+        reset();
+        navigate('/');
+      } else {
+        throw new Error('Login failed');
+      }
     } catch (error) {
-      toast.error('An error occurred, please try again.');
+      toast.error('Failed to login, check username or password');
       console.error(error);
     }
   };

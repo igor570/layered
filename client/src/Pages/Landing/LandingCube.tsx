@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 
-export const HomeCube = () => {
+export const LandingCube = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
   useFrame((state, delta) => (meshRef.current.rotation.y += delta));
   useFrame((state, delta) => (meshRef.current.rotation.z += delta));

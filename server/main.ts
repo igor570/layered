@@ -21,40 +21,46 @@ app.post('/signup', async (ctx) => {
 });
 
 app.post('/login', async (ctx) => {
-  const { email, password } = await ctx.req.json();
+  try {
+    const { email, password } = await ctx.req.json();
 
-  if (email && password) {
+    if (!email || !password) {
+      return ctx.json({ error: 'Email and password are required', success: false }, 400);
+    }
+
     const { data, error } = await db.auth.signInWithPassword({
       email,
       password
     });
 
-    //TODO: Revisit this
-
-    // if (data.session?.access_token) {
-    //   setCookie(ctx, data.session.access_token, 'session_token', {
-    //     httpOnly: true,
-    //     sameSite: 'strict',
-    //     maxAge: 1000 * 60 * 60 * 24
-    //   });
-    // }
-
-    if (error) APIResponse(error.message, 400);
+    if (error) {
+      return ctx.json({ error: error.message, success: false }, 400);
+    }
 
     const sessionData = {
       sessionToken: data.session?.access_token,
       refreshToken: data.session?.refresh_token
     };
 
+    // Example: Uncomment if you plan to set cookies
+    // if (data.session?.access_token) {
+    //   setCookie(ctx, data.session.access_token, 'session_token', {
+    //     httpOnly: true,
+    //     sameSite: 'strict',
+    //     maxAge: 1000 * 60 * 60 * 24, // 1 day
+    //   });
+    // }
+
     return ctx.json({
+      success: true,
       message: 'Sign in successful',
       user: data.user,
       session: sessionData
     });
+  } catch (err) {
+    console.error('Unexpected error during login:', err);
+    return ctx.json({ error: 'Internal Server Error', success: false }, 500);
   }
-
-  return ctx.json({ error: 'Email and password are required' }, 400);
 });
 
-//Launch server
 Deno.serve(app.fetch);
