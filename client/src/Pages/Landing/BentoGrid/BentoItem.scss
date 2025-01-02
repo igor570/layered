@@ -6,16 +6,10 @@
   padding: 8px;
 }
 
-.item:first-child {
-  grid-column: span 2;
-  @media (max-width: 600px) {
-    min-width: 300px;
-    grid-column: span 1;
-  }
-}
-
+.item:first-child,
 .item:last-child {
   grid-column: span 2;
+
   @media (max-width: 600px) {
     min-width: 300px;
     grid-column: span 1;
