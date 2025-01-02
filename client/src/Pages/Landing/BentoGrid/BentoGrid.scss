@@ -1,7 +1,9 @@
-//TODO: Make this responsive so it collapses to one column
-
 .items {
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
