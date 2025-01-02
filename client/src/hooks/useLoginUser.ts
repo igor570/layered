@@ -9,6 +9,7 @@ interface Payload {
 }
 
 interface LoginPromise {
+  success: boolean;
   message: string;
   user: User;
   session: Session;
@@ -37,9 +38,8 @@ export const postLogin = async ({ email, password }: Payload): Promise<LoginProm
   const data = await response.json();
 
   return {
-    message: data.message,
-    user: data.user,
-    session: data.session
+    ...data,
+    success: !!data.user && !!data.session?.sessionToken
   } as const;
 };
 

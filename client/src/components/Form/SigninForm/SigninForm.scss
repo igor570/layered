@@ -1,5 +1,13 @@
 @use '../../../index.scss' as *;
 
+.form-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .sign-in-form {
   width: 300px;
   display: flex;
@@ -8,7 +16,6 @@
   gap: 15px;
   padding: 15px;
   background: $primary-color;
-  margin: auto;
 
   .form-header {
     color: $secondary-color;

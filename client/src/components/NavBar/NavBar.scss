@@ -1,0 +1,29 @@
+@use '../../index.scss' as *;
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+
+  &-items {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  &-item {
+    display: inline-block;
+    border: 15px solid transparent;
+    border-width: 12px 15px;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    color: $secondary-color; /* Default text color */
+    border-radius: 5px; /* Optional: rounded corners */
+  }
+
+  &-item:hover {
+    background: rgba(228, 228, 231, 0.1);
+    cursor: pointer;
+  }
+}

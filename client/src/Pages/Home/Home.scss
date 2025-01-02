@@ -1,5 +1,11 @@
-@use "../../index" as *;
+@use '../../index' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 .home {
-  // todo add styling for homepage
+  height: 100%;
 }
