@@ -5,4 +5,18 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 50px;
+}
+
+.placeholder-section {
+  margin-top: 50px;
+  min-height: 600px;
+  width: 100%;
+  background-color: rgba(228, 228, 231, 0.03);
 }
