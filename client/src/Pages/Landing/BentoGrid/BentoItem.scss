@@ -1,0 +1,15 @@
+.item {
+  background: rebeccapurple;
+  min-width: 200px;
+  height: 200px;
+}
+
+.item:nth-child(1) {
+  background: red;
+  grid-column: span 2;
+}
+
+.item:nth-child(4) {
+  background-color: greenyellow;
+  grid-column: span 2;
+}
