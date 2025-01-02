@@ -1,15 +1,15 @@
 .item {
-  background: rebeccapurple;
+  border: 1px solid rgba(228, 228, 231, 0.2);
   min-width: 200px;
-  height: 200px;
+  min-height: 200px;
+  border-radius: 3px;
+  padding: 8px;
 }
 
-.item:nth-child(1) {
-  background: red;
+.item:first-child {
   grid-column: span 2;
 }
 
-.item:nth-child(4) {
-  background-color: greenyellow;
+.item:last-child {
   grid-column: span 2;
 }
